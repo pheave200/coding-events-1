@@ -20,13 +20,17 @@ public class Event {
     @Size(max = 500, message = "Description too long!")
     private String description;
 
+//    @NotBlank(message = "Location cannot be blank")
+    private String location;
+
     @NotBlank(message = "Email is required")
     @Email(message = "Invalid email. Try again.")
     private String contactEmail;
 
-    public Event(String name, String description, String contactEmail) {
+    public Event(String name, String description, String location, String contactEmail) {
         this.name = name;
         this.description = description;
+        this.location = location;
         this.contactEmail = contactEmail;
 
     }
@@ -35,6 +39,8 @@ public class Event {
         this.id = nextId;
         nextId++;
     }
+
+
 
     public String getName() {
         return name;
@@ -80,5 +86,13 @@ public class Event {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }
